@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<bean id="product1" class="edu.tdtu.vn.BeanEx.Product">
+		<property name="id" value="1" />
+		<property name="name" value="Banh" />
+		<property name="price" value="100" />
+	</bean>
+	<bean id="product2" class="edu.tdtu.vn.BeanEx.Product">
+		<constructor-arg value="2" type="int"></constructor-arg>
+		<constructor-arg value="Keo" type="String"></constructor-arg>
+		<constructor-arg value="100" type="int"></constructor-arg>
+	</bean>
+	<bean id="product3" class="edu.tdtu.vn.BeanEx.Product" scope="singleton">
+		<constructor-arg value="3" type="int"></constructor-arg>
+		<constructor-arg value="Trai cay" type="String"></constructor-arg>
+		<constructor-arg value="100" type="int"></constructor-arg>
+	</bean>
+</beans>
+
