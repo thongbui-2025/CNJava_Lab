@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>NavigationBar</title>
+</head>
+<body>
+<nav th:fragment="navbar" class="navbar navbar-expand-lg bg-body-tertiary bg-danger fixed-top">
+    <div class="container">
+        <a class="navbar-brand text-white" href="/"><i class="bi bi-apple"></i> Iphone Store</a>
+        <form class="d-flex d-lg-none" role="search" method="get" th:action="@{/filter}">
+            <input class="form-control me-2" type="search" placeholder="Bạn cần tìm gì?" aria-label="Search" name="productName">
+<!--            <button class="btn btn-outline-light" type="submit">Tìm kiếm</button>-->
+        </form>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots-vertical text-white"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mb-2 mb-lg-0 me-5">
+                <li class="nav-item">
+                    <a class="nav-link text-white ms-3" href="/">Trang chủ</a>
+                </li>
+            </ul>
+            <form class="ms-lg-4 d-lg-flex d-none me-auto" role="search" method="get" th:action="@{/filter}">
+                <input class="form-control me-2" type="search" placeholder="Bạn cần tìm gì?" aria-label="Search" name="productName" th:value="${productNameSearched} ? ${productNameSearched} : ''">
+<!--                <button class="btn btn-outline-light" type="submit">Tìm kiếm</button>-->
+            </form>
+            <div>
+                <a class="nav-link text-white" href="/purchase-history"><i class="bi bi-clock-history"></i> Lịch sử mua hàng </a>
+            </div>
+            <div>
+                <a class="nav-link text-white" href="/cart"><i class="bi bi-cart"></i> Giỏ hàng </a>
+            </div>
+            <div class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-white" id="username" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" th:text="${session.account} ? ${session.account.username} : 'Guest'">
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="/login" th:text="${session.account} ? 'Đăng xuất' : 'Đăng nhập'"> </a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+</body>
+</html>
